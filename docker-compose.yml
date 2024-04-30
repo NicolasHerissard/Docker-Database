@@ -1,0 +1,39 @@
+version: '3.3'
+services:
+
+    #serveur de base de donnees
+    database:
+       image: 'mariadb:10.3'
+       container_name: database
+       restart: always
+       environment:
+          MYSQL_USER: admin
+          MYSQL_PASSWORD: admin
+          MYSQL_DATABASE: telematos
+          MYSQL_ROOT_PASSWORD: root
+        
+       ports:
+           - '3307:3306'
+       volumes:
+           - ./mariadb/:/var/lib/mysql/
+           
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        container_name: phpmyadmin
+        restart: always
+        depends_on:
+            - database
+        environment:
+            PMA_HOST: database
+            PMA_PORT: 3306
+        ports:
+            - '8081:80'
+
+    telematos: 
+        build: 
+            context: Telematos
+        container_name: Telematos
+        depends_on:
+            - database
+        ports:
+            - '8000:8000'
