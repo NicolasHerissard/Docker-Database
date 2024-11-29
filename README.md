@@ -1,21 +1,21 @@
-#Docker-Database
+# Docker-Database
 
 Ce projet configure un environnement Docker pour utiliser une base de données MariaDB avec une interface de gestion phpMyAdmin.
 
-##Contenu
+## Contenu
 
-###Services
+### Services
 - **MariaDB** : Base de données relationnelle.
 - **phpMyAdmin** : Interface web pour gérer la base de données.
 
-###Ports exposés
+### Ports exposés
 - MariaDB : `3307` (interne : `3306`).
 - phpMyAdmin : `8081` (interne : `80`).
 
-###Persistance
+### Persistance
 Les données de MariaDB sont sauvegardées localement dans `./mariadb`.
 
-##Installation
+## Installation
 
 1. **Clonez ce dépôt** :  
    ```bash
